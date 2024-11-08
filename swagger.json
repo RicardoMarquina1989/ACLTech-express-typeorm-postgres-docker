@@ -319,6 +319,106 @@
           "application/json"
         ]
       }
+    },
+    "/url/top-100": {
+      "get": {
+        "summary": "/url/top-100",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "originalUrl": {
+                    "type": "string"
+                  },
+                  "shortCode": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "clickCount": {
+                    "type": "number"
+                  },
+                  "createdAt": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "302": {
+            "description": "Found",
+            "schema": {
+              "type": "string",
+              "example": "Found. Redirecting to /"
+            }
+          }
+        },
+        "tags": [],
+        "produces": [
+          "text/plain",
+          "application/json"
+        ]
+      }
+    },
+    "/url/{code}": {
+      "get": {
+        "summary": "/url/{code}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/url/shorten": {
+      "post": {
+        "summary": "/url/shorten",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "shortCode": {
+                  "type": "string",
+                  "example": "EDKeWrd"
+                }
+              }
+            }
+          }
+        },
+        "tags": [],
+        "produces": [
+          "application/json"
+        ]
+      }
     }
   },
   "schemes": [

@@ -290,6 +290,137 @@
         },
         "tags": []
       }
+    },
+    "/url/top-100": {
+      "get": {
+        "summary": "/url/top-100",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "originalUrl": {
+                        "type": "string"
+                      },
+                      "shortCode": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "clickCount": {
+                        "type": "number"
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "originalUrl": {
+                        "type": "string"
+                      },
+                      "shortCode": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "clickCount": {
+                        "type": "number"
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "302": {
+            "description": "Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "Found. Redirecting to /"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "Found. Redirecting to /"
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      }
+    },
+    "/url/{code}": {
+      "get": {
+        "summary": "/url/{code}",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {},
+        "tags": []
+      }
+    },
+    "/url/shorten": {
+      "post": {
+        "summary": "/url/shorten",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "shortCode": {
+                      "type": "string",
+                      "example": "EDKeWrd"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": []
+      }
     }
   },
   "tags": [],
