@@ -8,6 +8,7 @@ import { fetchPageTitle } from '../../../utils/crawler';
 import { bijectiveEncode, bijectiveDecode } from '../../../utils/bijective';
 import { Result } from '../../../constants/result';
 import { SuccessResult, ErrorResult, NotFoundResult } from '../../../interfaces/results';
+import { faker } from '@faker-js/faker'; // For generating random URLs
 
 export type CreateUrlResult = SuccessResult<{ id: Url['id']; shortCode: string }> | ErrorResult;
 export type GetUrlResult = SuccessResult<Url> | NotFoundResult | ErrorResult;
@@ -106,3 +107,30 @@ export async function getTop100Urls(): Promise<TopUrlsResult> {
 function generateShortCode(): string {
 	return bijectiveEncode(Date.now());
 }
+
+/**
+ * Bot to populate the database with random URLs
+ */
+export async function populateDatabase(numUrls: number): Promise<void> {
+	try {
+		for (let i = 0; i < numUrls; i++) {
+			// Generate random URL using faker.js
+			const randomUrl = faker.internet.url();
+			console.log(`Shortening URL: ${randomUrl}`);
+
+			// Call the shortenUrl service to insert the URL into the database
+			const result = await shortenUrl(randomUrl);
+
+			if (result.type === 'SUCCESS') {
+				console.log(`Successfully shortened ${randomUrl} to ${result.data.shortCode}`);
+			} else {
+				console.error(`Failed to shorten ${randomUrl}`);
+			}
+		}
+	} catch (error) {
+		console.error('Error populating the database', error);
+	}
+}
+
+// Call the bot function to populate the database with 100 URLs
+populateDatabase(100);
