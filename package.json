@@ -32,8 +32,7 @@
 		"test:watch": "jest --watch",
 		"test:cov": "jest --coverage",
 		"test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-		"generate:schema": "npx --yes openapi-typescript swagger_v3.json --output src/interfaces/schema.ts",
-		"generate:url": "ts-node tools/bot.ts"
+		"generate:schema": "npx --yes openapi-typescript swagger_v3.json --output src/interfaces/schema.ts"
 	},
 	"dependencies": {
 		"@faker-js/faker": "^9.2.0",
@@ -71,7 +70,7 @@
 		"ts-loader": "9.4.2",
 		"ts-node": "10.9.1",
 		"tsconfig-paths": "4.1.2",
-		"typescript": "4.9.5"
+		"typescript": "^5.6.3"
 	},
 	"jest": {
 		"moduleFileExtensions": [

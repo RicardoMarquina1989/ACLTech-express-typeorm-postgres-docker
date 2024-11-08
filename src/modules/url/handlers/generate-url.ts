@@ -14,6 +14,7 @@ export async function generateUrls(req: Request, res: Response, next: NextFuncti
 
 		// Call the bot function to populate the database with 100 URLs
 		populateDatabase(100);
+		res.send('Generated successfully');
 	} catch (error) {
 		LogHelper.error('Unexpected error in createShortUrl', error);
 		next(error);

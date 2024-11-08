@@ -131,6 +131,3 @@ export async function populateDatabase(numUrls: number): Promise<void> {
 		console.error('Error populating the database', error);
 	}
 }
-
-// Call the bot function to populate the database with 100 URLs
-populateDatabase(100);
